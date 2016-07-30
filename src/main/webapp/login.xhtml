@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Login</title>
+<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"></link>
+<link href="#{request.contextPath}/css/app.css" rel="stylesheet"></link>
+<link rel="stylesheet" type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+</head>
+<h:body>
+	<div id="mainWrapper">
+		<div class="login-container">
+			<div class="login-card">
+				<div class="login-form">
+					<form method="post" action="login" class="form-horizontal">
+						<c:if test="${param.error != null}">
+							<div class="alert alert-danger">
+								<p>Invalid username and password.</p>
+							</div>
+						</c:if>
+						<c:if test="${param.logout != null}">
+							<div class="alert alert-success">
+								<p>You have been logged out successfully.</p>
+							</div>
+						</c:if>
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="username"><i
+								class="fa fa-user"></i></label>
+							<h:inputText class="form-control" id="username" 
+								a:placeholder="Enter Username" required="true" />
+						</div>
+						<div class="input-group input-sm">
+							<label class="input-group-addon" for="password"><i
+								class="fa fa-lock"></i></label>
+							<h:inputSecret class="form-control" id="password"
+								a:placeholder="Enter Password" required="true" />
+						</div>
+						<!-- 						<input type="hidden" name="${_csrf.parameterName}" -->
+						<!-- 							value="${_csrf.token}" /> -->
+
+						<div class="form-actions">
+							<h:commandButton class="btn btn-block btn-primary btn-default"
+								value="Log in" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
